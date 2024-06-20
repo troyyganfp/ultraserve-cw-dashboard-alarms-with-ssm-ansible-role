@@ -331,15 +331,9 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
                 "region": "{{aws_region}}",
                 "title": "Netwrok Packet Shaped and Dropped"
             }
-        },
-        {
-            "height": 7,
-            "width": 24,
-            "y": 36,
-            "x": 0,
-            "type": "metric",
-            "properties": {
-                "metrics": [
+        }
+    ]
+}
 ABC
 # for y in `LANG=UTF-8 lsblk -f |grep "/" |sed 's/\`//g;s/-//g'|awk '{print $1}'|awk '{print $1}'` 
 # do
