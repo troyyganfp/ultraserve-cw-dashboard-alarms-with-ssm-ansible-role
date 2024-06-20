@@ -1,4 +1,5 @@
-## My Project
+## ultraserve-cw-dashboard-alarms-with-ssm-ansible-role
+
 
 This repository is used to create the cloudwatch agent on the ec2 servers, create alarms for metrics like CPU utilization, Memory Utilization, Disk Utilization etc. and also used for creating the dashboard per instance for monitoring.
 
