@@ -1,4 +1,3 @@
-cat > /tmp/cloudwatch_dashboard_template.json <<ABC
 {
     "widgets": [
         {
@@ -93,4 +92,3 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
         // }
     ]
 }
-ABC
