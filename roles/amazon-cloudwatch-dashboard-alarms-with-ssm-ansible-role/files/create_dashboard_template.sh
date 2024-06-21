@@ -1,4 +1,3 @@
-cat > /tmp/cloudwatch_dashboard_template.json <<ABC
 {
     "widgets": [
         {
@@ -9,11 +8,22 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
             "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "CWAgent", "disk_used_percent", "path", "/", "InstanceId", "{{instance_id}}", "device", "xvda1", "fstype", "xfs" ]
+                    [
+                        "CWAgent",
+                        "disk_used_percent",
+                        "path",
+                        "/",
+                        "InstanceId",
+                        "i-09fb5cdf306e7abd4",
+                        "device",
+                        "xvda1",
+                        "fstype",
+                        "xfs"
+                    ]
                 ],
                 "sparkline": true,
                 "view": "singleValue",
-                "region": "{{aws_region}}",
+                "region": "us-east-1",
                 "period": 300,
                 "start": "-PT3H"
             }
@@ -26,11 +36,19 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
             "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "AWS/EC2", "CPUUtilization", "InstanceId", "{{instance_id}}", { "label": "{{instance_id}} ({{inventory_hostname}})" } ]
+                    [
+                        "AWS/EC2",
+                        "CPUUtilization",
+                        "InstanceId",
+                        "i-09fb5cdf306e7abd4",
+                        {
+                            "label": "i-09fb5cdf306e7abd4 (ip-172-31-38-151.ec2.internal)"
+                        }
+                    ]
                 ],
                 "sparkline": true,
                 "view": "singleValue",
-                "region": "{{aws_region}}",
+                "region": "us-east-1",
                 "period": 300
             }
         },
@@ -42,12 +60,31 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
             "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "CWAgent", "mem_used_percent", "InstanceId", "{{instance_id}}", { "label": "{{instance_id}} ({{inventory_hostname}})" } ],
-                    [ ".", "mem_used", ".", ".", ".", ".", ".", ".", ".", "."]
+                    [
+                        "CWAgent",
+                        "mem_used_percent",
+                        "InstanceId",
+                        "i-09fb5cdf306e7abd4",
+                        {
+                            "label": "i-09fb5cdf306e7abd4 (ip-172-31-38-151.ec2.internal)"
+                        }
+                    ],
+                    [
+                        ".",
+                        "mem_used",
+                        ".",
+                        ".",
+                        ".",
+                        ".",
+                        ".",
+                        ".",
+                        ".",
+                        "."
+                    ]
                 ],
                 "sparkline": true,
                 "view": "singleValue",
-                "region": "{{aws_region}}",
+                "region": "us-east-1",
                 "period": 300
             }
         },
@@ -59,38 +96,46 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
             "type": "metric",
             "properties": {
                 "metrics": [
-                    [ "AWS/EC2", "NetworkPacketsOut", "InstanceId", "{{instance_id}}" ],
-                    [ ".", "NetworkPacketsIn", ".", ".", { "region": "{{aws_region}}", "accountId": "{{instance_id}}" } ],
-                    [ ".", "NetworkIn", ".", "{{instance_id}}", { "region": "{{aws_region}}" } ],
-                    [ ".", "NetworkOut", ".", ".", { "region": "{{aws_region}}"} ]
+                    [
+                        "AWS/EC2",
+                        "NetworkPacketsOut",
+                        "InstanceId",
+                        "i-09fb5cdf306e7abd4"
+                    ],
+                    [
+                        ".",
+                        "NetworkPacketsIn",
+                        ".",
+                        ".",
+                        {
+                            "region": "us-east-1",
+                            "accountId": "i-09fb5cdf306e7abd4"
+                        }
+                    ],
+                    [
+                        ".",
+                        "NetworkIn",
+                        ".",
+                        "i-09fb5cdf306e7abd4",
+                        {
+                            "region": "us-east-1"
+                        }
+                    ],
+                    [
+                        ".",
+                        "NetworkOut",
+                        ".",
+                        ".",
+                        {
+                            "region": "us-east-1"
+                        }
+                    ]
                 ],
                 "view": "timeSeries",
                 "stacked": false,
-                "region": "{{aws_region}}",
+                "region": "us-east-1",
                 "period": 300
             }
         }
-        // {
-        //     "height": 9,
-        //     "width": 24,
-        //     "y": 13,
-        //     "x": 0,
-        //     "type": "metric",
-        //     "properties": {
-        //         "metrics": [
-        //             [ "CWAgent", "processes_total", "InstanceId", "i-04f74ea6c9782df73", "AutoScalingGroupName", "awseb-e-jmbh9imepy-stack-AWSEBAutoScalingGroup-5HOS9HAB8C6K", "ImageId", "ami-08bb6051638d96a7e", "InstanceType", "t2.micro", { "region": "us-east-1" } ],
-        //             [ ".", "processes_blocked", ".", ".", ".", ".", ".", ".", ".", ".", { "region": "us-east-1" } ],
-        //             [ ".", "processes_sleeping", ".", ".", ".", ".", ".", ".", ".", ".", { "region": "us-east-1" } ],
-        //             [ ".", "processes_dead", ".", "i-00ef83569a3ebec4e", ".", ".", ".", ".", ".", ".", { "region": "us-east-1" } ],
-        //             [ ".", "processes_stopped", ".", "i-04f74ea6c9782df73", ".", ".", ".", ".", ".", ".", { "region": "us-east-1" } ],
-        //             [ ".", "processes_zombies", ".", ".", ".", ".", ".", ".", ".", ".", { "region": "us-east-1" } ]
-        //         ],
-        //         "view": "timeSeries",
-        //         "stacked": false,
-        //         "region": "us-east-1",
-        //         "period": 300
-        //     }
-        // }
     ]
 }
-ABC
