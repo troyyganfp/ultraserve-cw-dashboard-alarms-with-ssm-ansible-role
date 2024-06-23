@@ -335,31 +335,3 @@ cat > /tmp/cloudwatch_dashboard_template.json <<ABC
     ]
 }
 ABC
-# for y in `LANG=UTF-8 lsblk -f |grep "/" |sed 's/\`//g;s/-//g'|awk '{print $1}'|awk '{print $1}'` 
-# do
-# cat  >> /tmp/cloudwatch_dashboard_template.json <<ABC
-# 					[ "CWAgent", "disk_used_percent", "path", "`df -h |grep $y|awk '{print $NF}'`", "InstanceId", "{{instance_id}}", "ImageId", "{{ami}}", "InstanceType", "{{instance_type}}", "device", "$y", "fstype", "`LANG=UTF-8 lsblk -f |grep $y |awk '{print $2}'`" ],
-# ABC
-# done
-# cat  >> /tmp/cloudwatch_dashboard_template.json <<ABC
-#                     [ "...", "/dev", ".", ".", ".", ".", ".", ".", ".", "devtmpfs", ".", "devtmpfs" ]
-#                 ],
-#                 "view": "timeSeries",
-#                 "stacked": false,
-#                 "region": "{{aws_region}}",
-#                 "period": 300
-#             }
-#         },
-#         {
-#             "height": 1,
-#             "width": 24,
-#             "y": 35,
-#             "x": 0,
-#             "type": "text",
-#             "properties": {
-#                 "markdown": "# Disk Usage\n"
-#             }
-#         }
-#     ]
-# }
-# ABC
